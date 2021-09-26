@@ -29,27 +29,30 @@ enum Method: string
 
     public static function fromName(string $name): Method
     {
-        $method = Method::tryFromName($name);
-        if (is_null($method)) {
-            $enumName = static::class;
-            throw new ValueError("$name is not a valid name for enum \"$enumName\"");
+        $method = self::tryFromName($name);
+
+        if (null === $method) {
+            throw new ValueError(sprintf('%s is not a valid name for enum "%s"', $name, static::class));
         }
+
         return $method;
     }
     public static function tryFromName(?string $name): ?Method
     {
-        return match ($name) {
-            'GET' => Method::GET,
-            'HEAD' => Method::HEAD,
-            'POST' => Method::POST,
-            'PUT' => Method::PUT,
-            'DELETE' => Method::DELETE,
-            'CONNECT' => Method::CONNECT,
-            'OPTIONS' => Method::OPTIONS,
-            'TRACE' => Method::TRACE,
-            'PATCH' => Method::PATCH,
-            null => null,
-            default => null,
+        if (null === $name) {
+            return null;
+        }
+
+        return match (strtoupper($name)) {
+            'GET' => self::GET,
+            'HEAD' => self::HEAD,
+            'POST' => self::POST,
+            'PUT' => self::PUT,
+            'DELETE' => self::DELETE,
+            'CONNECT' => self::CONNECT,
+            'OPTIONS' => self::OPTIONS,
+            'TRACE' => self::TRACE,
+            'PATCH' => self::PATCH,
         };
     }
 }
