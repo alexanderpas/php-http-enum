@@ -104,21 +104,25 @@ enum ReasonPhrase: string
 
     public static function fromName(string $name): ReasonPhrase
     {
-        $reasonPhrase = ReasonPhrase::tryFromName($name);
+        $reasonPhrase = self::tryFromName($name);
+
         if (is_null($reasonPhrase)) {
             $enumName = static::class;
             throw new ValueError("$name is not a valid name for enum \"$enumName\"");
         }
+
         return $reasonPhrase;
     }
 
     public static function fromInteger(int $integer): ReasonPhrase
     {
-        $reasonPhrase = ReasonPhrase::tryFromInteger($integer);
+        $reasonPhrase = self::tryFromInteger($integer);
+
         if (is_null($reasonPhrase)) {
             $enumName = static::class;
             throw new ValueError("$integer is not a valid value for enum \"$enumName\"");
         }
+
         return $reasonPhrase;
     }
 
@@ -127,77 +131,74 @@ enum ReasonPhrase: string
         /**
          * @var string $statusCode->name
          */
-        $name = $statusCode->name;
-        $reasonPhrase = ReasonPhrase::fromName($name);
-        return $reasonPhrase;
+        return self::fromName($statusCode->name);
     }
 
     public static function tryFromName(?string $name): ?ReasonPhrase
     {
         return match ($name) {
-            'HTTP_100' => ReasonPhrase::HTTP_100,
-            'HTTP_101' => ReasonPhrase::HTTP_101,
-            'HTTP_102' => ReasonPhrase::HTTP_102,
-            'HTTP_103' => ReasonPhrase::HTTP_103,
-            'HTTP_200' => ReasonPhrase::HTTP_200,
-            'HTTP_201' => ReasonPhrase::HTTP_201,
-            'HTTP_202' => ReasonPhrase::HTTP_202,
-            'HTTP_203' => ReasonPhrase::HTTP_203,
-            'HTTP_204' => ReasonPhrase::HTTP_204,
-            'HTTP_205' => ReasonPhrase::HTTP_205,
-            'HTTP_206' => ReasonPhrase::HTTP_206,
-            'HTTP_207' => ReasonPhrase::HTTP_207,
-            'HTTP_208' => ReasonPhrase::HTTP_208,
-            'HTTP_226' => ReasonPhrase::HTTP_226,
-            'HTTP_300' => ReasonPhrase::HTTP_300,
-            'HTTP_301' => ReasonPhrase::HTTP_301,
-            'HTTP_302' => ReasonPhrase::HTTP_302,
-            'HTTP_303' => ReasonPhrase::HTTP_303,
-            'HTTP_304' => ReasonPhrase::HTTP_304,
-            'HTTP_305' => ReasonPhrase::HTTP_305,
+            'HTTP_100' => self::HTTP_100,
+            'HTTP_101' => self::HTTP_101,
+            'HTTP_102' => self::HTTP_102,
+            'HTTP_103' => self::HTTP_103,
+            'HTTP_200' => self::HTTP_200,
+            'HTTP_201' => self::HTTP_201,
+            'HTTP_202' => self::HTTP_202,
+            'HTTP_203' => self::HTTP_203,
+            'HTTP_204' => self::HTTP_204,
+            'HTTP_205' => self::HTTP_205,
+            'HTTP_206' => self::HTTP_206,
+            'HTTP_207' => self::HTTP_207,
+            'HTTP_208' => self::HTTP_208,
+            'HTTP_226' => self::HTTP_226,
+            'HTTP_300' => self::HTTP_300,
+            'HTTP_301' => self::HTTP_301,
+            'HTTP_302' => self::HTTP_302,
+            'HTTP_303' => self::HTTP_303,
+            'HTTP_304' => self::HTTP_304,
+            'HTTP_305' => self::HTTP_305,
             'HTTP_306' => null, // intentionally null
-            'HTTP_307' => ReasonPhrase::HTTP_307,
-            'HTTP_308' => ReasonPhrase::HTTP_308,
-            'HTTP_400' => ReasonPhrase::HTTP_400,
-            'HTTP_401' => ReasonPhrase::HTTP_401,
-            'HTTP_402' => ReasonPhrase::HTTP_402,
-            'HTTP_403' => ReasonPhrase::HTTP_403,
-            'HTTP_404' => ReasonPhrase::HTTP_404,
-            'HTTP_405' => ReasonPhrase::HTTP_405,
-            'HTTP_406' => ReasonPhrase::HTTP_406,
-            'HTTP_407' => ReasonPhrase::HTTP_407,
-            'HTTP_408' => ReasonPhrase::HTTP_408,
-            'HTTP_409' => ReasonPhrase::HTTP_409,
-            'HTTP_410' => ReasonPhrase::HTTP_410,
-            'HTTP_411' => ReasonPhrase::HTTP_411,
-            'HTTP_412' => ReasonPhrase::HTTP_412,
-            'HTTP_413' => ReasonPhrase::HTTP_413,
-            'HTTP_414' => ReasonPhrase::HTTP_414,
-            'HTTP_415' => ReasonPhrase::HTTP_415,
-            'HTTP_416' => ReasonPhrase::HTTP_416,
-            'HTTP_417' => ReasonPhrase::HTTP_417,
-            'HTTP_421' => ReasonPhrase::HTTP_421,
-            'HTTP_422' => ReasonPhrase::HTTP_422,
-            'HTTP_423' => ReasonPhrase::HTTP_423,
-            'HTTP_424' => ReasonPhrase::HTTP_424,
-            'HTTP_425' => ReasonPhrase::HTTP_425,
-            'HTTP_426' => ReasonPhrase::HTTP_426,
-            'HTTP_428' => ReasonPhrase::HTTP_428,
-            'HTTP_429' => ReasonPhrase::HTTP_429,
-            'HTTP_431' => ReasonPhrase::HTTP_431,
-            'HTTP_451' => ReasonPhrase::HTTP_451,
-            'HTTP_500' => ReasonPhrase::HTTP_500,
-            'HTTP_501' => ReasonPhrase::HTTP_501,
-            'HTTP_502' => ReasonPhrase::HTTP_502,
-            'HTTP_503' => ReasonPhrase::HTTP_503,
-            'HTTP_504' => ReasonPhrase::HTTP_504,
-            'HTTP_505' => ReasonPhrase::HTTP_505,
-            'HTTP_506' => ReasonPhrase::HTTP_506,
-            'HTTP_507' => ReasonPhrase::HTTP_507,
-            'HTTP_508' => ReasonPhrase::HTTP_508,
-            'HTTP_510' => ReasonPhrase::HTTP_510,
-            'HTTP_511' => ReasonPhrase::HTTP_511,
-            null => null,
+            'HTTP_307' => self::HTTP_307,
+            'HTTP_308' => self::HTTP_308,
+            'HTTP_400' => self::HTTP_400,
+            'HTTP_401' => self::HTTP_401,
+            'HTTP_402' => self::HTTP_402,
+            'HTTP_403' => self::HTTP_403,
+            'HTTP_404' => self::HTTP_404,
+            'HTTP_405' => self::HTTP_405,
+            'HTTP_406' => self::HTTP_406,
+            'HTTP_407' => self::HTTP_407,
+            'HTTP_408' => self::HTTP_408,
+            'HTTP_409' => self::HTTP_409,
+            'HTTP_410' => self::HTTP_410,
+            'HTTP_411' => self::HTTP_411,
+            'HTTP_412' => self::HTTP_412,
+            'HTTP_413' => self::HTTP_413,
+            'HTTP_414' => self::HTTP_414,
+            'HTTP_415' => self::HTTP_415,
+            'HTTP_416' => self::HTTP_416,
+            'HTTP_417' => self::HTTP_417,
+            'HTTP_421' => self::HTTP_421,
+            'HTTP_422' => self::HTTP_422,
+            'HTTP_423' => self::HTTP_423,
+            'HTTP_424' => self::HTTP_424,
+            'HTTP_425' => self::HTTP_425,
+            'HTTP_426' => self::HTTP_426,
+            'HTTP_428' => self::HTTP_428,
+            'HTTP_429' => self::HTTP_429,
+            'HTTP_431' => self::HTTP_431,
+            'HTTP_451' => self::HTTP_451,
+            'HTTP_500' => self::HTTP_500,
+            'HTTP_501' => self::HTTP_501,
+            'HTTP_502' => self::HTTP_502,
+            'HTTP_503' => self::HTTP_503,
+            'HTTP_504' => self::HTTP_504,
+            'HTTP_505' => self::HTTP_505,
+            'HTTP_506' => self::HTTP_506,
+            'HTTP_507' => self::HTTP_507,
+            'HTTP_508' => self::HTTP_508,
+            'HTTP_510' => self::HTTP_510,
+            'HTTP_511' => self::HTTP_511,
             default => null,
         };
     }
@@ -208,6 +209,6 @@ enum ReasonPhrase: string
         if (is_null($statusCode)) {
             return null;
         }
-        return ReasonPhrase::FromStatusCode($statusCode);
+        return self::FromStatusCode($statusCode);
     }
 }

@@ -104,21 +104,25 @@ enum StatusCode: int
 
     public static function fromName(string $name): StatusCode
     {
-        $statusCode = StatusCode::tryFromName($name);
+        $statusCode = self::tryFromName($name);
+
         if (is_null($statusCode)) {
             $enumName = static::class;
             throw new ValueError("$name is not a valid name for enum \"$enumName\"");
         }
+
         return $statusCode;
     }
 
     public static function fromInteger(int $integer): StatusCode
     {
-        $statusCode = StatusCode::tryFromInteger($integer);
+        $statusCode = self::tryFromInteger($integer);
+
         if (is_null($statusCode)) {
             $enumName = static::class;
             throw new ValueError("$integer is not a valid value for enum \"$enumName\"");
         }
+
         return $statusCode;
     }
 
@@ -127,77 +131,74 @@ enum StatusCode: int
         /**
          * @var string $reasonPhrase->name
          */
-        $name = $reasonPhrase->name;
-        $statusCode = StatusCode::fromName($name);
-        return $statusCode;
+        return self::fromName($reasonPhrase->name);
     }
 
     public static function tryFromName(?string $name): ?StatusCode
     {
         return match ($name) {
-            'HTTP_100' => StatusCode::HTTP_100,
-            'HTTP_101' => StatusCode::HTTP_101,
-            'HTTP_102' => StatusCode::HTTP_102,
-            'HTTP_103' => StatusCode::HTTP_103,
-            'HTTP_200' => StatusCode::HTTP_200,
-            'HTTP_201' => StatusCode::HTTP_201,
-            'HTTP_202' => StatusCode::HTTP_202,
-            'HTTP_203' => StatusCode::HTTP_203,
-            'HTTP_204' => StatusCode::HTTP_204,
-            'HTTP_205' => StatusCode::HTTP_205,
-            'HTTP_206' => StatusCode::HTTP_206,
-            'HTTP_207' => StatusCode::HTTP_207,
-            'HTTP_208' => StatusCode::HTTP_208,
-            'HTTP_226' => StatusCode::HTTP_226,
-            'HTTP_300' => StatusCode::HTTP_300,
-            'HTTP_301' => StatusCode::HTTP_301,
-            'HTTP_302' => StatusCode::HTTP_302,
-            'HTTP_303' => StatusCode::HTTP_303,
-            'HTTP_304' => StatusCode::HTTP_304,
-            'HTTP_305' => StatusCode::HTTP_305,
+            'HTTP_100' => self::HTTP_100,
+            'HTTP_101' => self::HTTP_101,
+            'HTTP_102' => self::HTTP_102,
+            'HTTP_103' => self::HTTP_103,
+            'HTTP_200' => self::HTTP_200,
+            'HTTP_201' => self::HTTP_201,
+            'HTTP_202' => self::HTTP_202,
+            'HTTP_203' => self::HTTP_203,
+            'HTTP_204' => self::HTTP_204,
+            'HTTP_205' => self::HTTP_205,
+            'HTTP_206' => self::HTTP_206,
+            'HTTP_207' => self::HTTP_207,
+            'HTTP_208' => self::HTTP_208,
+            'HTTP_226' => self::HTTP_226,
+            'HTTP_300' => self::HTTP_300,
+            'HTTP_301' => self::HTTP_301,
+            'HTTP_302' => self::HTTP_302,
+            'HTTP_303' => self::HTTP_303,
+            'HTTP_304' => self::HTTP_304,
+            'HTTP_305' => self::HTTP_305,
             'HTTP_306' => null, // intentionally null
-            'HTTP_307' => StatusCode::HTTP_307,
-            'HTTP_308' => StatusCode::HTTP_308,
-            'HTTP_400' => StatusCode::HTTP_400,
-            'HTTP_401' => StatusCode::HTTP_401,
-            'HTTP_402' => StatusCode::HTTP_402,
-            'HTTP_403' => StatusCode::HTTP_403,
-            'HTTP_404' => StatusCode::HTTP_404,
-            'HTTP_405' => StatusCode::HTTP_405,
-            'HTTP_406' => StatusCode::HTTP_406,
-            'HTTP_407' => StatusCode::HTTP_407,
-            'HTTP_408' => StatusCode::HTTP_408,
-            'HTTP_409' => StatusCode::HTTP_409,
-            'HTTP_410' => StatusCode::HTTP_410,
-            'HTTP_411' => StatusCode::HTTP_411,
-            'HTTP_412' => StatusCode::HTTP_412,
-            'HTTP_413' => StatusCode::HTTP_413,
-            'HTTP_414' => StatusCode::HTTP_414,
-            'HTTP_415' => StatusCode::HTTP_415,
-            'HTTP_416' => StatusCode::HTTP_416,
-            'HTTP_417' => StatusCode::HTTP_417,
-            'HTTP_421' => StatusCode::HTTP_421,
-            'HTTP_422' => StatusCode::HTTP_422,
-            'HTTP_423' => StatusCode::HTTP_423,
-            'HTTP_424' => StatusCode::HTTP_424,
-            'HTTP_425' => StatusCode::HTTP_425,
-            'HTTP_426' => StatusCode::HTTP_426,
-            'HTTP_428' => StatusCode::HTTP_428,
-            'HTTP_429' => StatusCode::HTTP_429,
-            'HTTP_431' => StatusCode::HTTP_431,
-            'HTTP_451' => StatusCode::HTTP_451,
-            'HTTP_500' => StatusCode::HTTP_500,
-            'HTTP_501' => StatusCode::HTTP_501,
-            'HTTP_502' => StatusCode::HTTP_502,
-            'HTTP_503' => StatusCode::HTTP_503,
-            'HTTP_504' => StatusCode::HTTP_504,
-            'HTTP_505' => StatusCode::HTTP_505,
-            'HTTP_506' => StatusCode::HTTP_506,
-            'HTTP_507' => StatusCode::HTTP_507,
-            'HTTP_508' => StatusCode::HTTP_508,
-            'HTTP_510' => StatusCode::HTTP_510,
-            'HTTP_511' => StatusCode::HTTP_511,
-            null => null,
+            'HTTP_307' => self::HTTP_307,
+            'HTTP_308' => self::HTTP_308,
+            'HTTP_400' => self::HTTP_400,
+            'HTTP_401' => self::HTTP_401,
+            'HTTP_402' => self::HTTP_402,
+            'HTTP_403' => self::HTTP_403,
+            'HTTP_404' => self::HTTP_404,
+            'HTTP_405' => self::HTTP_405,
+            'HTTP_406' => self::HTTP_406,
+            'HTTP_407' => self::HTTP_407,
+            'HTTP_408' => self::HTTP_408,
+            'HTTP_409' => self::HTTP_409,
+            'HTTP_410' => self::HTTP_410,
+            'HTTP_411' => self::HTTP_411,
+            'HTTP_412' => self::HTTP_412,
+            'HTTP_413' => self::HTTP_413,
+            'HTTP_414' => self::HTTP_414,
+            'HTTP_415' => self::HTTP_415,
+            'HTTP_416' => self::HTTP_416,
+            'HTTP_417' => self::HTTP_417,
+            'HTTP_421' => self::HTTP_421,
+            'HTTP_422' => self::HTTP_422,
+            'HTTP_423' => self::HTTP_423,
+            'HTTP_424' => self::HTTP_424,
+            'HTTP_425' => self::HTTP_425,
+            'HTTP_426' => self::HTTP_426,
+            'HTTP_428' => self::HTTP_428,
+            'HTTP_429' => self::HTTP_429,
+            'HTTP_431' => self::HTTP_431,
+            'HTTP_451' => self::HTTP_451,
+            'HTTP_500' => self::HTTP_500,
+            'HTTP_501' => self::HTTP_501,
+            'HTTP_502' => self::HTTP_502,
+            'HTTP_503' => self::HTTP_503,
+            'HTTP_504' => self::HTTP_504,
+            'HTTP_505' => self::HTTP_505,
+            'HTTP_506' => self::HTTP_506,
+            'HTTP_507' => self::HTTP_507,
+            'HTTP_508' => self::HTTP_508,
+            'HTTP_510' => self::HTTP_510,
+            'HTTP_511' => self::HTTP_511,
             default => null,
         };
     }
@@ -207,11 +208,12 @@ enum StatusCode: int
         if (is_null($integer)) {
             return null;
         }
+
         /**
          * @var ?StatusCode
          * @psalm-suppress UndefinedMethod
          */
-        $statusCode = StatusCode::tryFrom($integer);
+        $statusCode = self::tryFrom($integer);
         return $statusCode;
     }
 }
