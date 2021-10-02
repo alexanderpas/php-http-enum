@@ -32,16 +32,33 @@ class MethodPositionalTest extends TestCase
         $this->cases = Method::cases();
     }
 
-    public function testFromNames(): void
+    public function testCaconicalNameCapitalization(): void
     {
         foreach ($this->cases as $case) {
             /**
              * @var string $case->name
              */
             $name = $case->name;
+            $canonicalName = strtoupper($case->name);
+            Assert::assertThat($name, Assert::identicalTo($canonicalName));
+        }
+    }
+
+    public function testFromNamesUppercase(): void
+    {
+        foreach ($this->cases as $case) {
+            /**
+             * @var string $case->name
+             */
+            $name = strtoupper($case->name);
             $method = Method::fromName($name);
             Assert::assertThat($method, Assert::identicalTo($case));
+        }
+    }
 
+    public function testFromNamesLowercase(): void
+    {
+        foreach ($this->cases as $case) {
             /**
              * @var string $case->name
              */
@@ -51,20 +68,73 @@ class MethodPositionalTest extends TestCase
         }
     }
 
-    public function testTryFromNames(): void
+    public function testFromNamesTitlecase(): void
     {
         foreach ($this->cases as $case) {
             /**
              * @var string $case->name
              */
-            $name = $case->name;
+            $name = ucfirst(strtolower($case->name));
+            $method = Method::fromName($name);
+            Assert::assertThat($method, Assert::identicalTo($case));
+        }
+    }
+
+    public function testFromNamesInvertedTitlecase(): void
+    {
+        foreach ($this->cases as $case) {
+            /**
+             * @var string $case->name
+             */
+            $name = lcfirst(strtoupper($case->name));
+            $method = Method::fromName($name);
+            Assert::assertThat($method, Assert::identicalTo($case));
+        }
+    }
+
+    public function testTryFromNamesUppercase(): void
+    {
+        foreach ($this->cases as $case) {
+            /**
+             * @var string $case->name
+             */
+            $name = strtoupper($case->name);
             $method = Method::tryFromName($name);
             Assert::assertThat($method, Assert::identicalTo($case));
+        }
+    }
 
+    public function testTryFromNamesLowercase(): void
+    {
+        foreach ($this->cases as $case) {
             /**
              * @var string $case->name
              */
             $name = strtolower($case->name);
+            $method = Method::tryFromName($name);
+            Assert::assertThat($method, Assert::identicalTo($case));
+        }
+    }
+
+    public function testTryFromNamesTitlecase(): void
+    {
+        foreach ($this->cases as $case) {
+            /**
+             * @var string $case->name
+             */
+            $name = ucfirst(strtolower($case->name));
+            $method = Method::tryFromName($name);
+            Assert::assertThat($method, Assert::identicalTo($case));
+        }
+    }
+
+    public function testTryFromNamesInvertedTitlecase(): void
+    {
+        foreach ($this->cases as $case) {
+            /**
+             * @var string $case->name
+             */
+            $name = lcfirst(strtoupper($case->name));
             $method = Method::tryFromName($name);
             Assert::assertThat($method, Assert::identicalTo($case));
         }
