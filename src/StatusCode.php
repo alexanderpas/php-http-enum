@@ -107,7 +107,7 @@ enum StatusCode: int
         $statusCode = self::tryFromName($name);
 
         if (null === $statusCode) {
-            throw new ValueError(sprintf('%s is not a valid name for enum "%s"', $name, static::class));
+            throw new ValueError($name . ' is not a valid name for enum "' . static::class . '"');
         }
 
         return $statusCode;
@@ -118,7 +118,7 @@ enum StatusCode: int
         $statusCode = self::tryFromInteger($integer);
 
         if (null === $statusCode) {
-            throw new ValueError(sprintf('%s is not a valid value for enum "%s"', $integer, static::class));
+            throw new ValueError($integer . ' is not a valid value for enum "' . static::class . '"');
         }
 
         return $statusCode;

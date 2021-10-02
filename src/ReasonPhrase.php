@@ -107,7 +107,7 @@ enum ReasonPhrase: string
         $reasonPhrase = self::tryFromName($name);
 
         if (null === $reasonPhrase) {
-            throw new ValueError(sprintf('%s is not a valid name for enum "%s"', $name, static::class));
+            throw new ValueError($name . ' is not a valid name for enum "' . static::class . '"');
         }
 
         return $reasonPhrase;
@@ -118,7 +118,7 @@ enum ReasonPhrase: string
         $reasonPhrase = self::tryFromInteger($integer);
 
         if (null === $reasonPhrase) {
-            throw new ValueError(sprintf('%s is not a valid name for enum "%s"', $integer, static::class));
+            throw new ValueError($integer . ' is not a valid value for enum "' . static::class . '"');
         }
 
         return $reasonPhrase;
