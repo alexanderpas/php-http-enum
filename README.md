@@ -9,7 +9,7 @@ This package provides HTTP Methods, Status Codes and Reason Phrases as PHP 8.1+ 
 
 All [IANA registered HTTP Status codes][STATUS] and corresponding Reason Phrases as of the latest update on 2018-09-21 are supported.
 
-This includes the HTTP Methods defined in [RFC 5789] and [RFC 7231], as well as all Status Codes and Reason Phrases as defined in [HTTP/1.1] ([RFC 7231], [RFC 7232], [RFC 7233], [RFC 7235]) and [HTTP/2] ([RFC 7540]) as wel as other RFC's defining HTTP status codes such as [WebDAV] ([RFC 2518], [RFC 4918], [RFC 5842], [RFC 8144]) and more ([RFC 8297], [RFC 3229], [RFC 7538], [RFC 7694], [RFC 6585], [RFC 7725], [RFC 2295], [RFC 2774])
+This includes the HTTP Methods defined in [RFC 5789] and [RFC 7231], as well as all Status Codes and Reason Phrases as defined in [HTTP/1.1] ([RFC 7231], [RFC 7232], [RFC 7233], [RFC 7235]) and [HTTP/2] ([RFC 7540]) as well as other RFC's defining HTTP status codes such as [WebDAV] ([RFC 2518], [RFC 4918], [RFC 5842], [RFC 8144]) and more ([RFC 8297], [RFC 3229], [RFC 7538], [RFC 7694], [RFC 6585], [RFC 7725], [RFC 2295], [RFC 2774])
 
 ## Requirements
 
@@ -63,7 +63,7 @@ Distributed under the Boost Software License, Version 1.0.
 ## Notes
 
 - Support for the HTTP status code 306 has intentionally been removed as it has been defined as Unused in [RFC 7231, Section 6.4.6][RFC 7231]
-- The Methods, Status Codes and Reason Phrases defined in the [Hyper Text Coffee Pot Control Protocol][HTCPCP] ([RFC 2324]) are not supported as they aren't properly registed and provide Methods unique to that specific protocol.
+- The Methods, Status Codes and Reason Phrases defined in the [Hyper Text Coffee Pot Control Protocol][HTCPCP] ([RFC 2324]) are not supported as they aren't properly registered and provide Methods unique to that specific protocol.
 - The [Request Methods specific to WebDAV][WebDAV] are not supported.
 
 
