@@ -41,6 +41,13 @@ class MethodNamedTest extends TestCase
             $name = $case->name;
             $method = Method::fromName(name: $name);
             Assert::assertThat($method, Assert::identicalTo($case));
+
+            /**
+             * @var string $case->name
+             */
+            $name = strtolower($case->name);
+            $method = Method::fromName(name: $name);
+            Assert::assertThat($method, Assert::identicalTo($case));
         }
     }
 
@@ -51,6 +58,13 @@ class MethodNamedTest extends TestCase
              * @var string $case->name
              */
             $name = $case->name;
+            $method = Method::tryFromName(name: $name);
+            Assert::assertThat($method, Assert::identicalTo($case));
+
+            /**
+             * @var string $case->name
+             */
+            $name = strtolower($case->name);
             $method = Method::tryFromName(name: $name);
             Assert::assertThat($method, Assert::identicalTo($case));
         }
