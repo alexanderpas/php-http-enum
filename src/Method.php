@@ -32,11 +32,13 @@ enum Method: string
         $method = self::tryFromName($name);
 
         if (is_null($method)) {
-            throw new ValueError($name . ' is not a valid name for enum "' . static::class . '"');
+            $enumName = static::class;
+            throw new ValueError("$name is not a valid name for enum \"$enumName\"");
         }
 
         return $method;
     }
+
     public static function tryFromName(?string $name): ?Method
     {
         if (is_null($name)) {
