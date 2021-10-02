@@ -53,6 +53,7 @@ enum Method: string
             'OPTIONS' => self::OPTIONS,
             'TRACE' => self::TRACE,
             'PATCH' => self::PATCH,
+            default => null,
         };
     }
 }
