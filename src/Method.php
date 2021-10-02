@@ -31,7 +31,7 @@ enum Method: string
     {
         $method = self::tryFromName($name);
 
-        if (null === $method) {
+        if (is_null($method)) {
             throw new ValueError($name . ' is not a valid name for enum "' . static::class . '"');
         }
 
@@ -39,7 +39,7 @@ enum Method: string
     }
     public static function tryFromName(?string $name): ?Method
     {
-        if (null === $name) {
+        if (is_null($name)) {
             return null;
         }
 
