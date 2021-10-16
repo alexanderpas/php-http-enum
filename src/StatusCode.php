@@ -136,10 +136,12 @@ enum StatusCode: int
 
     public static function tryFromName(?string $name): ?StatusCode
     {
-        foreach (self::cases() as $case) {
-            if ($case->name === $name) {
-                return $case;
-            }
+        if (defined("self::$name")) {
+            /**
+             * @var StatusCode
+             */
+            $enumCase = constant("self::$name");
+            return $enumCase;
         }
 
         return null;
