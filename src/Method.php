@@ -41,21 +41,21 @@ enum Method: string
 
     public static function tryFromName(?string $name): ?Method
     {
+        // We aren't allowed to pass a null value to strtoupper(), so we have to handle this early.
         if (is_null($name)) {
             return null;
         }
 
-        return match (strtoupper($name)) {
-            'GET' => self::GET,
-            'HEAD' => self::HEAD,
-            'POST' => self::POST,
-            'PUT' => self::PUT,
-            'DELETE' => self::DELETE,
-            'CONNECT' => self::CONNECT,
-            'OPTIONS' => self::OPTIONS,
-            'TRACE' => self::TRACE,
-            'PATCH' => self::PATCH,
-            default => null,
-        };
+        $name = strtoupper($name);
+
+        if (defined("self::$name")) {
+            /**
+             * @var Method
+             */
+            $enumCase = constant("self::$name");
+            return $enumCase;
+        }
+
+        return null;
     }
 }

@@ -136,71 +136,15 @@ enum StatusCode: int
 
     public static function tryFromName(?string $name): ?StatusCode
     {
-        return match ($name) {
-            'HTTP_100' => self::HTTP_100,
-            'HTTP_101' => self::HTTP_101,
-            'HTTP_102' => self::HTTP_102,
-            'HTTP_103' => self::HTTP_103,
-            'HTTP_200' => self::HTTP_200,
-            'HTTP_201' => self::HTTP_201,
-            'HTTP_202' => self::HTTP_202,
-            'HTTP_203' => self::HTTP_203,
-            'HTTP_204' => self::HTTP_204,
-            'HTTP_205' => self::HTTP_205,
-            'HTTP_206' => self::HTTP_206,
-            'HTTP_207' => self::HTTP_207,
-            'HTTP_208' => self::HTTP_208,
-            'HTTP_226' => self::HTTP_226,
-            'HTTP_300' => self::HTTP_300,
-            'HTTP_301' => self::HTTP_301,
-            'HTTP_302' => self::HTTP_302,
-            'HTTP_303' => self::HTTP_303,
-            'HTTP_304' => self::HTTP_304,
-            'HTTP_305' => self::HTTP_305,
-            'HTTP_306' => null, // intentionally null
-            'HTTP_307' => self::HTTP_307,
-            'HTTP_308' => self::HTTP_308,
-            'HTTP_400' => self::HTTP_400,
-            'HTTP_401' => self::HTTP_401,
-            'HTTP_402' => self::HTTP_402,
-            'HTTP_403' => self::HTTP_403,
-            'HTTP_404' => self::HTTP_404,
-            'HTTP_405' => self::HTTP_405,
-            'HTTP_406' => self::HTTP_406,
-            'HTTP_407' => self::HTTP_407,
-            'HTTP_408' => self::HTTP_408,
-            'HTTP_409' => self::HTTP_409,
-            'HTTP_410' => self::HTTP_410,
-            'HTTP_411' => self::HTTP_411,
-            'HTTP_412' => self::HTTP_412,
-            'HTTP_413' => self::HTTP_413,
-            'HTTP_414' => self::HTTP_414,
-            'HTTP_415' => self::HTTP_415,
-            'HTTP_416' => self::HTTP_416,
-            'HTTP_417' => self::HTTP_417,
-            'HTTP_421' => self::HTTP_421,
-            'HTTP_422' => self::HTTP_422,
-            'HTTP_423' => self::HTTP_423,
-            'HTTP_424' => self::HTTP_424,
-            'HTTP_425' => self::HTTP_425,
-            'HTTP_426' => self::HTTP_426,
-            'HTTP_428' => self::HTTP_428,
-            'HTTP_429' => self::HTTP_429,
-            'HTTP_431' => self::HTTP_431,
-            'HTTP_451' => self::HTTP_451,
-            'HTTP_500' => self::HTTP_500,
-            'HTTP_501' => self::HTTP_501,
-            'HTTP_502' => self::HTTP_502,
-            'HTTP_503' => self::HTTP_503,
-            'HTTP_504' => self::HTTP_504,
-            'HTTP_505' => self::HTTP_505,
-            'HTTP_506' => self::HTTP_506,
-            'HTTP_507' => self::HTTP_507,
-            'HTTP_508' => self::HTTP_508,
-            'HTTP_510' => self::HTTP_510,
-            'HTTP_511' => self::HTTP_511,
-            default => null,
-        };
+        if (defined("self::$name")) {
+            /**
+             * @var StatusCode
+             */
+            $enumCase = constant("self::$name");
+            return $enumCase;
+        }
+
+        return null;
     }
 
     public static function tryFromInteger(?int $integer): ?StatusCode
