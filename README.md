@@ -37,13 +37,13 @@ All available Enums live in the `\Alexanderpas\Common\HTTP` namespace.
 
 In addition to the Enum methods available by default on Backed Enums, the following Enum methods are available.
 
-- `Method::fromName(string $name): Method` Gives back a HTTP method enum when provided with a valid uppercase HTTP method. (such as `'GET'` or `'POST'`)
+- `Method::fromName(string $name): Method` Gives back a HTTP method enum when provided with a valid HTTP method. (such as `'GET'` or `'POST'` or `'put'` or `'pAtcH'`)
 - `StatusCode::fromInteger(int $integer): StatusCode` Gives back a HTTP Status Code enum when provided with a valid HTTP status code as integer. (such as `200` or `404`)
 - `StatusCode::fromName(string $name): StatusCode` Gives back a HTTP Status Code enum when provided with a valid HTTP status code as a `HTTP_` prefixed string. (such as `'HTTP_200'` or `'HTTP_404'`)
-- `ReasonPhrase::fromInteger(int  $integer): ReasonPhrase` Gives back a HTTP Reason Phrase enum when provided with a valid HTTP status code as integer. (such as `200` or `404`)
+- `ReasonPhrase::fromInteger(int $integer): ReasonPhrase` Gives back a HTTP Reason Phrase enum when provided with a valid HTTP status code as integer. (such as `200` or `404`)
 - `ReasonPhrase::fromName(string $name): ReasonPhrase` Gives back a HTTP Reason Phrase enum when provided with a valid HTTP status code as a `HTTP_` prefixed string. (such as `'HTTP_200'` or `'HTTP_404'`)
 
-All of the above methods also have a try variant (such as `Method::tryFromName(?string $name): ?Method`), which returns `null` if an invalid value of the correct type has been given instead of thowing an exception.
+All of the above methods also have a try variant (such as `Method::tryFromName(?string $name): ?Method`), which returns `null` if an invalid value of the correct type has been given instead of throwing an exception.
 
 Additionally, you can change between Status Code enums and Reason Phrase enums using the following methods:
 
